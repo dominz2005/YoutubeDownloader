@@ -9,17 +9,16 @@ async function GetLibrary()
     {
         const child = div.children[i];
         
-        if(!response.some(video => video.id == child.getAttribute('id')))
+        if(!response.some(video => video.url == child.getAttribute('url')))
             child.remove();
     }
     
     response = response.filter(video => !videos.some(vid => JSON.stringify(vid) == JSON.stringify(video)));
-    console.log(response);
 
     response.forEach(video => 
     {
         const videoDiv = document.createElement('div');
-        videoDiv.setAttribute('id', video.id);
+        videoDiv.setAttribute('url', video.url);
 
         const thumbnail = document.createElement('img');
         thumbnail.src = video.thumbnail;

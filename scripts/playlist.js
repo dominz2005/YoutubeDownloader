@@ -9,7 +9,6 @@ async function GetPlaylist(url)
         data.videos.forEach(video => 
         {
             const object = {
-                id: video.ID,
                 url: video.URL,
                 title: video.title,
                 owner: video.owner.name,

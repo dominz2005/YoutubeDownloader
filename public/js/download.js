@@ -10,12 +10,11 @@ async function GetDownloads()
     {
         const child = div.children[i];
         
-        if(!response.some(res => res.video.id == child.getAttribute('id')))
+        if(!response.some(res => res.video.url == child.getAttribute('url')))
             child.remove();
     }
     
     response = response.filter(res => !videos.some(video => JSON.stringify(video) == JSON.stringify(res)));
-    console.log(response);
 
     response.forEach(res => 
     {
@@ -27,14 +26,14 @@ async function GetDownloads()
             {
                 const child = div.children[i];
                 
-                if(video.id == child.getAttribute('id'))
+                if(video.url == child.getAttribute('url'))
                     child.querySelector('.status').innerText = res.status;
             }
             return;
         }
 
         const videoDiv = document.createElement('div');
-        videoDiv.setAttribute('id', video.id);
+        videoDiv.setAttribute('url', video.url);
 
         const thumbnail = document.createElement('img');
         thumbnail.src = video.thumbnail;

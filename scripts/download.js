@@ -44,7 +44,7 @@ setInterval(() =>
 
 function AddToDownload(video, type)
 {
-    if(library.isInLibrary(video.id))return;
+    if(library.isInLibrary(video.url)) return;
 
     toDownload.push( { video, type, status: "WAITING..." });
 }

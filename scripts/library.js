@@ -15,7 +15,7 @@ function AddToLibrary(video)
 }
 
 module.exports = {
-    isInLibrary: (id) => videos.some(video => video.id == id),
+    isInLibrary: (url) => videos.some(video => video.url == url),
     addToLibrary: (video) => { AddToLibrary(video) },
     getLibrary: () => videos,
 }
