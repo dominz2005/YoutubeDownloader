@@ -1,0 +1,110 @@
+body
+{
+    background-color: #111B53;
+    font-family: 'Inter';
+}
+
+nav
+{
+    position: fixed;
+    left: 0;
+    top: 0;  
+    height: 100%;
+    width: 145px;
+    background-color: #202B70;
+}
+nav .logo
+{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+nav .logo img
+{
+    height: 75px;
+    width: 51px;
+}
+nav .logo h4
+{
+    margin: 5px 0;
+    text-align: center;
+    font-size: 12px;
+    color: #7DA0E4;
+}
+nav ul
+{
+    margin-top: 80px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    list-style-type: none;
+}
+nav ul li a
+{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    letter-spacing: 10%;
+    font-size: 14px;
+    text-decoration: none;
+    color: #8D97BF;
+    transition: .3s;
+}
+nav ul li a svg
+{
+    fill: #8D97BF;
+    height: 18px;
+    width: 18px;
+    transition: .3s;
+}
+nav ul li a:hover, nav ul .current a { color: #bdc3e7 }
+nav ul li a:hover svg, nav ul .current a svg { fill: #bdc3e7 }
+
+main
+{
+    margin-left: 145px;
+}
+main h1
+{
+    margin-top: 65px;
+    text-align: center;
+    font-size: 25px;
+    color: #A1A6C2;
+}
+main form
+{
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 85% 15%;
+    justify-content: center;
+    align-items: center;
+    width: 740px;
+    background: linear-gradient(#233077, #213076);
+}
+main form input
+{
+    margin: 0;
+    padding: 8px 20px;
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+    font-family: 'Inter';
+}
+main form input:focus { outline: none }
+main form input[type=text] { color: #8D96C2 }
+main form input[type=submit]
+{
+    cursor: pointer;
+    border-left: 3px solid #8D96C2;
+    color: #fff;
+    transition: .2s;
+}
+main form input[type=submit]:hover { background-color: rgba(0, 0, 0, 0.1) }
