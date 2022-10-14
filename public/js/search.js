@@ -5,13 +5,13 @@ function AddListeners(object)
 
     videoButton.addEventListener('click', async () =>
     {
-        let response = await window.electronAPI.addToDownloads({ videos: object.getAttribute('url'), type: "video" });
+        let response = await window.electronAPI.addToDownloads({ videos: object.getAttribute('url'), type: "video", lib: false });
 
         console.log(response);
     });
     audioButton.addEventListener('click', async () =>
     {
-        let response = await window.electronAPI.addToDownloads({ videos: object.getAttribute('url'), type: "audio" });
+        let response = await window.electronAPI.addToDownloads({ videos: object.getAttribute('url'), type: "audio", lib: false });
 
         console.log(response);
     });

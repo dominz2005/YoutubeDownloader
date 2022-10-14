@@ -45,13 +45,21 @@ app.whenReady().then(() =>
 
         allVideos.forEach(video => 
         {
-            download.addToDownload(video, videos.type);
+            download.addToDownload(video, videos.type, videos.lib);
         });    
 
         return videos;
     });
     ipcMain.handle('get-downloads', (event) => download.getDownloads());
     ipcMain.handle('get-library', (event) => library.getLibrary());
+    ipcMain.handle('remove-from-library', (event, video) => 
+    {
+        if(!library.isInLibrary(video.video.url)) return "err";
+
+        library.removeFromLibrary(video.video);
+
+        return "ok";
+    });
 
     window.loadFile('public/html/index.html');
 });

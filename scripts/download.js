@@ -11,7 +11,9 @@ function OnDownload()
 function OnFinish()
 {
     downloading = false;
-    library.addToLibrary(toDownload[0].video);
+
+    if(!toDownload[0].lib)
+        library.addToLibrary(toDownload[0].video);
 
     toDownload.shift();
 }
@@ -42,14 +44,14 @@ setInterval(() =>
 
 }, 1000);
 
-function AddToDownload(video, type)
+function AddToDownload(video, type, lib)
 {
-    if(library.isInLibrary(video.url)) return;
+    if(!lib && library.isInLibrary(video.url)) return;
 
-    toDownload.push( { video, type, status: "WAITING..." });
+    toDownload.push( { video, type, lib, status: "WAITING..." });
 }
 
 module.exports = {
-    addToDownload: (video, type) => AddToDownload(video, type),
+    addToDownload: (video, type, lib) => AddToDownload(video, type, lib),
     getDownloads: () => JSON.stringify(toDownload),
 }

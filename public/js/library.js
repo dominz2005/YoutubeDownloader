@@ -1,5 +1,12 @@
 const div = document.querySelector('.videos');
 
+async function Download(video, type)
+{
+    let response = await window.electronAPI.addToDownloads({ videos: JSON.stringify(video), type: type, lib: true });
+
+    console.log(response);
+}
+
 let videos = new Array();
 async function GetLibrary()
 {
@@ -31,11 +38,38 @@ async function GetLibrary()
         
         const owner = document.createElement('p');
         owner.innerText = video.owner;
+
+        const downloadVideo = document.createElement('button');
+        downloadVideo.innerText = "DOWNLOAD VIDEO";
+        downloadVideo.addEventListener('click', () => Download(video, "video"));
+
+        const downloadAudio = document.createElement('button');
+        downloadAudio.innerText = "DOWNLOAD AUDIO";
+        downloadAudio.addEventListener('click', () => Download(video, "audio"));
+
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = "DEL";
+        deleteButton.addEventListener('click', async () =>
+        {
+            let response = await window.electronAPI.removeFromLibrary({ video: video });
+        
+            switch (response) {
+                case "ok":
+                    videoDiv.remove();
+                break;
+                case "err":
+                    console.log("error");
+                break;
+            }
+        });
         
         videoDiv.appendChild(thumbnail);
         videoDiv.appendChild(duration);
         videoDiv.appendChild(title);
         videoDiv.appendChild(owner);
+        videoDiv.appendChild(downloadVideo);
+        videoDiv.appendChild(downloadAudio);
+        videoDiv.appendChild(deleteButton);
 
         div.appendChild(videoDiv);
 
