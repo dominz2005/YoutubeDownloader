@@ -1,4 +1,5 @@
 const div = document.querySelector('.videos');
+div.classList.add('lib');
 
 async function Download(video, type)
 {
@@ -32,12 +33,19 @@ async function GetLibrary()
         
         const duration = document.createElement('p');
         duration.innerText = video.duration;
+        duration.className = "duration";
     
+        const info = document.createElement('div');
+        info.className = "info";
+
         const title = document.createElement('h4');
         title.innerText = video.title;
         
         const owner = document.createElement('p');
-        owner.innerText = video.owner;
+        owner.innerText = `by: ${video.owner}`;
+
+        const buttons = document.createElement('div');
+        buttons.className = "buttons";
 
         const downloadVideo = document.createElement('button');
         downloadVideo.innerText = "DOWNLOAD VIDEO";
@@ -48,7 +56,7 @@ async function GetLibrary()
         downloadAudio.addEventListener('click', () => Download(video, "audio"));
 
         const deleteButton = document.createElement('button');
-        deleteButton.innerText = "DEL";
+        deleteButton.innerText = "D \n E \n L";
         deleteButton.addEventListener('click', async () =>
         {
             let response = await window.electronAPI.removeFromLibrary({ video: video });
@@ -63,13 +71,17 @@ async function GetLibrary()
             }
         });
         
-        videoDiv.appendChild(thumbnail);
-        videoDiv.appendChild(duration);
-        videoDiv.appendChild(title);
-        videoDiv.appendChild(owner);
-        videoDiv.appendChild(downloadVideo);
-        videoDiv.appendChild(downloadAudio);
-        videoDiv.appendChild(deleteButton);
+        info.appendChild(thumbnail);
+        info.appendChild(duration);
+        info.appendChild(title);
+        info.appendChild(owner);
+
+        buttons.appendChild(downloadVideo);
+        buttons.appendChild(downloadAudio);
+        buttons.appendChild(deleteButton);
+
+        videoDiv.appendChild(info);
+        videoDiv.appendChild(buttons);
 
         div.appendChild(videoDiv);
 

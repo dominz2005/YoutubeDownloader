@@ -1,20 +1,37 @@
 {
   "name": "youtubeplaylistdownlaoder",
   "version": "1.0.0",
-  "description": "",
+  "description": "download youtube videos",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@fabricio-191/youtube": "^0.0.3",
+    "ffmpeg-static-electron": "^2.0.3",
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
     "yt-converter": "^1.3.2"
   },
   "devDependencies": {
-    "electron": "^20.2.0"
+    "electron": "^20.2.0",
+    "electron-builder": "^23.6.0"
+  },
+  "build": {
+    "appId": "com.dominz2005",
+    "productName": "Youtube Playlist Downloader",
+    "target": "NSIS",
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false
+    },
+    "directories": {
+      "output": "packages",
+      "buildResources": "build"
+    },
+    "asar": true
   }
 }

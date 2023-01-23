@@ -16,7 +16,6 @@ app.whenReady().then(() =>
         resizable: false,
         webPreferences: { preload: path.join(__dirname, 'scripts', 'preloads.js') }
     });
-    window.webContents.openDevTools();
 
     ipcMain.handle('send-playlist', async (event, url) =>
     {

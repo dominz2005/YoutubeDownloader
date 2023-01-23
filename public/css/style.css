@@ -108,3 +108,172 @@ main form input[type=submit]
     transition: .2s;
 }
 main form input[type=submit]:hover { background-color: rgba(0, 0, 0, 0.1) }
+
+main > .buttons
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 50px;
+}
+main > .buttons button
+{
+    cursor: pointer;
+    padding: 4px 10px;
+    border: none;
+    background-color: #213076;
+    font-size: 13px;
+    color: #FFFFFF;
+    transition: .2s;
+}
+main > .buttons .hidden
+{
+    display: none;
+}
+main > .buttons button:hover { background-color: #2c409b }
+main > .buttons button:active { background-color: #40519e }
+main .videos
+{
+    margin-top: 50px;
+    margin-inline: auto;
+    width: 640px;
+}
+main .videos > h2
+{
+    text-align: center;
+    color: #A1A6C2;
+}
+main .videos > div:not(.playlist)
+{
+    margin-top: 30px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 500px 140px;
+    align-items: center;
+    gap: 15px;
+}
+main .videos > .playlist
+{
+    margin-top: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+main .videos > div .info
+{
+    display: grid;
+    grid-template-columns: 200px auto;
+    align-items: center;
+    gap: 10px;
+}
+main .videos > div .info .duration
+{
+    position: absolute;
+    z-index: 2;
+    right: calc(100% - 190px);
+    bottom: 10px;
+    color: #FFFFFF;
+}
+main .videos > div .info .type
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    height: 25px;
+    width: 25px;
+    color: #FFFFFF;
+    background-color: #000000;
+    border-radius: 50%;
+}
+main .videos > div .info .type svg
+{
+    height: 50%;
+    width: 50%;
+    fill: #fff;
+}
+main .videos > div .info .duration::after
+{
+    content: '';
+    padding: 0 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: .7;
+    background-color: #000000;
+    border-radius: 1px;
+}
+main .videos > div .info img
+{
+    grid-row: 1 / span 2;
+    width: 200px;
+}
+main .videos > div .info h4
+{
+    margin: 0;
+    padding: 0;
+    align-self: flex-start;
+    font-size: 15px;
+    font-weight: 300;
+    color: #FFFFFF;
+}
+main .videos > div .info p
+{
+    margin: 0;
+    padding: 0;
+    align-self: flex-end;
+    font-size: 12px;
+    color: #8D96C2;
+}
+main .videos > div .buttons
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+main .videos > div .status
+{
+    padding: 4px;
+    text-align: center;
+    background-color: #213076;
+    font-size: 13px;
+    color: #FFFFFF;
+}
+main .videos > div .buttons button
+{
+    cursor: pointer;
+    padding: 4px;
+    border: none;
+    background-color: #213076;
+    font-size: 13px;
+    color: #FFFFFF;
+    transition: .2s;
+}
+main .videos > div .buttons button:hover { background-color: #2c409b }
+main .videos > div .buttons button:active { background-color: #40519e }
+
+main .lib { width: 665px }
+main .lib > div { grid-template-columns: 500px 165px }
+main .lib > div .buttons
+{
+    display: grid;
+    grid-template-columns: auto 20px;
+    gap: 10px;
+}
+main .lib > div .buttons button:last-child
+{
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    background-color: #752D3A;
+}
+main .lib > div .buttons button:last-child:hover { background-color: #8f3747 }
+main .lib > div .buttons button:last-child:active { background-color: #b24458 }

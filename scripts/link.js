@@ -1,17 +1,18 @@
 const { getVideo, search } = require('@fabricio-191/youtube');
+const yt = require("yt-converter");
 
 async function GetInfo(url)
 {
-    const info = await getVideo(url).then(info => info);
+    const info = await yt.getInfo(url).then(info => info);
 
     const object = {
-        url: info.URL,
-        title: info.name,
-        owner: info.owner.name,
-        duration: info.duration.normal,
+        url: url,
+        title: info.title,
+        owner: info.owner,
+        duration: millisToMinutesAndSeconds(info.formats[0].approxDurationMs),
         thumbnail: info.thumbnails[0].url
     }
-
+    
     return object;
 }
 async function Search(value)
@@ -42,4 +43,10 @@ async function Search(value)
 module.exports = {
     getVideo: async (url) => await GetInfo(url),
     search: async (value) => await Search(value)
+}
+
+function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
